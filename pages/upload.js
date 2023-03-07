@@ -20,7 +20,7 @@ export default function UploadPage() {
     try {
       await octokit.repos.createOrUpdateFileContents({
         owner: 'PranavPurwar',
-        repo: 'pranavpurwar.ga',
+        repo: 'blog',
         path: selectedFile.name,
         message: `Upload ${selectedFile.name}`,
         content: Buffer.from(fileContents).toString('base64'),
