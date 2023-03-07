@@ -10,7 +10,7 @@ export default function UploadPage() {
 
   const handleUpload = async () => {
     const octokit = new Octokit({
-      auth: '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',
+      auth: process.env.TOKEN,
     });
 
     // Read the contents of the selected file
