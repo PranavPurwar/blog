@@ -17,13 +17,17 @@ export default function UploadPage() {
     const fileContents = await selectedFile.text();
 
     // Upload the file to the repository
-    await octokit.repos.createOrUpdateFileContents({
-      owner: 'PranavPurwar',
-      repo: 'pranavpurwar.ga',
-      path: selectedFile.name,
-      message: `Upload ${selectedFile.name}`,
-      content: Buffer.from(fileContents).toString('base64'),
-    });
+    try {
+      await octokit.repos.createOrUpdateFileContents({
+        owner: 'PranavPurwar',
+        repo: 'pranavpurwar.ga',
+        path: selectedFile.name,
+        message: `Upload ${selectedFile.name}`,
+        content: Buffer.from(fileContents).toString('base64'),
+      });
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
